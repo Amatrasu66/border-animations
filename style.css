@@ -1,37 +1,71 @@
-body
+.box1
 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     background-color: black;
-}
-
-.div2
-{
-    border: 2px solid black;
-    text-align: center;
-    width: 30rem;
-    font-family: Helvetica, sans-serif;
-    font-size: 20px; 
-    background-color: hsla(249, 6%, 23%, 0.432);
     color: white;
-    border-radius: 20px;
+    text-align: center;
+    padding: 2em;
+    border-radius: 2rem;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    width: 28rem;
+    padding-bottom: 3rem;
+    padding-top: 1rem;
+    position: relative;
+    margin: 0 auto;
 }
 
-.div2:hover
+@property --angle
 {
-    animation: name duration timing-function delay iteration-count direction fill-mode;
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
 }
 
-h1
+body{
+    background: hsla(0, 0%, 0%, 0.884);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+span
 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
 }
 
-p
+.box1::after, .box1::before
 {
-    padding: 2rem;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background-image: conic-gradient(from var(--angle), red,hsl(240, 100%, 50%),hsl(324, 98%, 51%),red); */
+    background-image: conic-gradient(from var(--angle),transparent 70%, rgb(255, 255, 255));
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 5px;
+    z-index: -1;
+    border-radius: 2rem;
+    animation: 5s spin linear infinite;
 }
 
+.box1::before
+{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin
+{
+    from
+    {
+        --angle: 0deg;
+    }
+    to
+    {
+        --angle: 360deg;
+    }
+}
